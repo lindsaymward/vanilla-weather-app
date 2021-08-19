@@ -11,11 +11,31 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/styles.css" />
-    <title>Lindsay's Weather App</title>
+    <title>Lindsay Ward's Weather App</title>
   </head>
   <body>
     <div class="container-fluid">
-      <h1>Lindsay's Weather App</h1>
+      <div class="card" style="width: 30rem;">
+        <div class="card-body">
+          <h1 class="card-title">Weather App</h1>
+          <input type="search" placeholder="Enter a city.."></input>
+          <input type="submit" value="Search city" class="btn btn-primary" />
+          <input type="submit" value="Use my location" class="btn btn-primary"/>
+        <div class="card-text">
+          <div class="row">
+          <div class="col-6"><h2>Vancouver</h2>
+          <h3>19°C | <a href="#">°F</a></h3></div>
+          <div class="col-6"><ul class="list-group list-group-flush"></ul>
+            <li class="list-group-item">Precipitation: 20%</li>
+            <li class="list-group-item">Humidity: 50%</li>
+            <li class="list-group-item">Wind: 5km/h</li>
+          </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <footer>This project was coded by <a href="https://www.linkedin.com/in/lindsaymward21/" target=_blank>Lindsay Ward</a> and is <a href="https://github.com/lindsaymward/vanilla-weather-app" target=_blank>open-source code</a>.</footer>
     </div>
     <script src="src/app.js"></script>
   </body>
