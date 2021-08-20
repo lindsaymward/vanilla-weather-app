@@ -1,3 +1,50 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
 h1 {
+  font-size: 30px;
   text-align: center;
+  font-weight: 700;
+}
+h2 {
+  font-size: 38px;
+  font-weight: 600;
+  margin: 0;
+}
+footer {
+  text-align: center;
+}
+.card {
+  margin: 0 auto;
+  border: 2px solid;
+}
+.card-text {
+  text-align: center;
+}
+.container-fluid {
+  padding: 30px;
+}
+.list-group-item {
+  line-height: 1;
+  border: none;
+  font-style: italic;
+  font-weight: 400;
+}
+.precipitation {
+  margin-top: 10px;
+}
+.row {
+  margin-top: 20px;
+}
+.search-engine {
+  margin: 15px 0px 5px 5px;
+}
+
+.temperature {
+  font-size: 34px;
+}
+.temperature .units {
+  font-size: 16px;
+  position: relative;
+  top: -12px;
 }
