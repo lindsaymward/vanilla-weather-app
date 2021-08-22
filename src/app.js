@@ -15,8 +15,6 @@ function updateDate(timestamp) {
     hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
-  console.log(minutes);
-
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = `${week[days]} ${hours}:${minutes}`;
 }
