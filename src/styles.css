@@ -1,5 +1,11 @@
 body {
   font-family: "Open Sans", sans-serif;
+  background: rgb(251, 194, 235);
+  background: linear-gradient(
+    90deg,
+    rgba(251, 194, 235, 1) 0%,
+    rgba(166, 193, 238, 1) 100%
+  );
 }
 h1 {
   font-size: 30px;
@@ -13,10 +19,16 @@ h2 {
 }
 footer {
   text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+a {
+  text-shadow: none;
 }
 .card {
   margin: 0 auto;
   border: 2px solid;
+  border-radius: 12px;
 }
 .card-text {
   text-align: center;
