@@ -24,6 +24,7 @@ footer {
 }
 a {
   text-shadow: none;
+  text-decoration: none;
 }
 .card {
   margin: 0 auto;
