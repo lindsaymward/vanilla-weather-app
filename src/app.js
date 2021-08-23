@@ -20,9 +20,16 @@ function updateDate(timestamp) {
 }
 
 function updateWeather(response) {
+  let description = document.querySelector("weather-description");
   let humidity = document.querySelector("#humidity");
   let temperature = document.querySelector("#temperature");
   let wind = document.querySelector("#wind");
+  let icon = document.querySelector("#weather-icon");
+  description.innerHTML = response.data.weather[0].description;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   humidity.innerHTML = response.data.main.humidity;
   temperature.innerHTML = Math.round(response.data.main.temp);
   wind.innerHTML = Math.round(response.data.wind.speed);
