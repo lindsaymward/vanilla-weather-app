@@ -20,11 +20,13 @@ function updateDate(timestamp) {
 }
 
 function updateWeather(response) {
+  let city = document.querySelector("h2");
   let description = document.querySelector("#weather-description");
   let humidity = document.querySelector("#humidity");
   let temperature = document.querySelector("#temperature");
   let wind = document.querySelector("#wind");
   let icon = document.querySelector("#weather-icon");
+  city.innerHTML = response.data.name;
   description.innerHTML = response.data.weather[0].main;
   icon.setAttribute(
     "src",
@@ -63,6 +65,23 @@ function displayMetricTemperature(event) {
   imperialLink.classList.remove("active");
   currentTemp.innerHTML = celsius;
 }
+
+function determineCoordinates(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "5df8b506b715f17ed0c74fd6fd849642";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(updateWeather);
+}
+
+function findUserLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(determineCoordinates);
+}
+
+let locationButton = document.querySelector("#location-button");
+locationButton.addEventListener("click", findUserLocation);
+
 let enterCity = document.querySelector("#search-engine");
 enterCity.addEventListener("submit", updateCity);
 
