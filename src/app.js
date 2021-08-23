@@ -20,7 +20,6 @@ function updateDate(timestamp) {
 }
 
 function updateWeather(response) {
-  console.log(response.data);
   let humidity = document.querySelector("#humidity");
   let temperature = document.querySelector("#temperature");
   let wind = document.querySelector("#wind");
