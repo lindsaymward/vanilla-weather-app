@@ -31,9 +31,10 @@ function updateWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   humidity.innerHTML = response.data.main.humidity;
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  celsius = Math.round(response.data.main.temp);
+  temperature.innerHTML = celsius;
   wind.innerHTML = Math.round(response.data.wind.speed);
-  let date = updateDate(response.data.dt * 1000);
+  updateDate(response.data.dt * 1000);
 }
 
 function updateCity(event) {
@@ -46,5 +47,29 @@ function updateCity(event) {
   axios.get(apiUrl).then(updateWeather);
 }
 
+function displayImperialTemperature(event) {
+  event.preventDefault();
+  let fahrenheit = Math.round((celsius * 9) / 5 + 32);
+  let currentTemp = document.querySelector("#temperature");
+  metricLink.classList.remove("active");
+  imperialLink.classList.add("active");
+  currentTemp.innerHTML = fahrenheit;
+}
+
+function displayMetricTemperature(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#temperature");
+  metricLink.classList.add("active");
+  imperialLink.classList.remove("active");
+  currentTemp.innerHTML = celsius;
+}
 let enterCity = document.querySelector("#search-engine");
 enterCity.addEventListener("submit", updateCity);
+
+let imperialLink = document.querySelector("#imperial-link");
+imperialLink.addEventListener("click", displayImperialTemperature);
+
+let celsius = null;
+
+let metricLink = document.querySelector("#metric-link");
+metricLink.addEventListener("click", displayMetricTemperature);
