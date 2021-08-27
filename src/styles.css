@@ -17,6 +17,9 @@ h2 {
   font-weight: 600;
   margin: 0;
 }
+h3 {
+  font-size: 16px;
+}
 footer {
   text-align: center;
   color: white;
@@ -42,6 +45,9 @@ a {
   border: none;
   font-style: italic;
   font-weight: 400;
+}
+.low-temp {
+  opacity: 0.7;
 }
 .precipitation {
   margin-top: 10px;
