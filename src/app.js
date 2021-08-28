@@ -15,6 +15,9 @@ function updateDate(timestamp) {
     hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = `${week[days]} ${hours}:${minutes}`;
 }
@@ -70,7 +73,6 @@ function displayMetricTemperature(event) {
 function determineCoordinates(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "5df8b506b715f17ed0c74fd6fd849642";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(updateWeather);
 }
@@ -107,6 +109,8 @@ function loadDefaultCity() {
 }
 
 loadDefaultCity();
+
+let apiKey = "5df8b506b715f17ed0c74fd6fd849642";
 
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", findUserLocation);
