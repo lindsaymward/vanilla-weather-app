@@ -36,6 +36,7 @@ function updateWeather(response) {
   celsius = Math.round(response.data.main.temp);
   temperature.innerHTML = celsius;
   wind.innerHTML = Math.round(response.data.wind.speed);
+  displayForecast();
   updateDate(response.data.dt * 1000);
 }
 
@@ -78,6 +79,34 @@ function findUserLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(determineCoordinates);
 }
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let day = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  day.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+        <h3>${day}</h3>
+        <img src="http://openweathermap.org/img/wn/04d@2x.png" width="48px"></img> 
+        <span class="high-temp">15°</span> / 
+        <span class="low-temp">10°</span>
+      </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function loadDefaultCity() {
+  let cityHTML = document.querySelector("h2");
+  cityHTML.innerHTML = "Vancouver";
+  let apiKey = "5df8b506b715f17ed0c74fd6fd849642";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Vancouver&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(updateWeather);
+}
+
+loadDefaultCity();
 
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", findUserLocation);
