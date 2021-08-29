@@ -84,19 +84,30 @@ function findUserLocation(event) {
   navigator.geolocation.getCurrentPosition(determineCoordinates);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = date.getDay();
+  let week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return week[days];
+}
 function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let day = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
-  day.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-        <h3>${day}</h3>
-        <img src="http://openweathermap.org/img/wn/04d@2x.png" width="48px"></img> 
-        <span class="high-temp">15°</span> / 
-        <span class="low-temp">10°</span>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+        <h3>${formatDay(forecastDay.dt)}</h3>
+        <img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" width="48px"></img> 
+        <span class="high-temp">${Math.round(forecastDay.temp.max)}°</span> / 
+        <span class="low-temp">${Math.round(forecastDay.temp.min)}°</span>
       </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
