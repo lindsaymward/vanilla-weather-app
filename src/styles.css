@@ -29,6 +29,16 @@ a {
   text-shadow: none;
   text-decoration: none;
 }
+.btn-primary {
+  background-color: #fac2eb;
+  border: solid 2px #a6c1ef;
+  color: #48484a;
+  transition: 200ms ease-in-out;
+}
+.btn-primary:hover {
+  background-color: #a6c1ef;
+  border: solid 2px #fac2eb;
+}
 .card {
   margin: 0 auto;
   border: 2px solid;
