@@ -53,23 +53,6 @@ function updateCity(event) {
   axios.get(apiUrl).then(updateWeather);
 }
 
-function displayImperialTemperature(event) {
-  event.preventDefault();
-  let fahrenheit = Math.round((celsius * 9) / 5 + 32);
-  let currentTemp = document.querySelector("#temperature");
-  metricLink.classList.remove("active");
-  imperialLink.classList.add("active");
-  currentTemp.innerHTML = fahrenheit;
-}
-
-function displayMetricTemperature(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#temperature");
-  metricLink.classList.add("active");
-  imperialLink.classList.remove("active");
-  currentTemp.innerHTML = celsius;
-}
-
 function determineCoordinates(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -128,13 +111,7 @@ let apiKey = "5df8b506b715f17ed0c74fd6fd849642";
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", findUserLocation);
 
+let celsius = "null";
+
 let enterCity = document.querySelector("#search-engine");
 enterCity.addEventListener("submit", updateCity);
-
-let imperialLink = document.querySelector("#imperial-link");
-imperialLink.addEventListener("click", displayImperialTemperature);
-
-let celsius = null;
-
-let metricLink = document.querySelector("#metric-link");
-metricLink.addEventListener("click", displayMetricTemperature);
