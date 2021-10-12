@@ -23,7 +23,7 @@ function updateDate(timestamp) {
 }
 
 function updateWeather(response) {
-  let city = document.querySelector("h2");
+  let city = document.querySelector("h1");
   let description = document.querySelector("#weather-description");
   let humidity = document.querySelector("#humidity");
   let temperature = document.querySelector("#temperature");
@@ -47,7 +47,7 @@ function updateWeather(response) {
 function updateCity(event) {
   event.preventDefault();
   let newCity = document.querySelector("#search-city");
-  let city = document.querySelector("h2");
+  let city = document.querySelector("h1");
   city.innerHTML = `${newCity.value}`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${newCity.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(updateWeather);
@@ -97,7 +97,7 @@ function displayForecast(response) {
 }
 
 function loadDefaultCity() {
-  let cityHTML = document.querySelector("h2");
+  let cityHTML = document.querySelector("h1");
   cityHTML.innerHTML = "Vancouver";
   let apiKey = "5df8b506b715f17ed0c74fd6fd849642";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Vancouver&appid=${apiKey}&units=metric`;

@@ -7,12 +7,8 @@ body {
     rgba(166, 193, 238, 1) 100%
   );
 }
+
 h1 {
-  font-size: 30px;
-  text-align: center;
-  font-weight: 700;
-}
-h2 {
   font-size: 38px;
   font-weight: 600;
   margin: 0;
@@ -85,4 +81,28 @@ a {
 
 .units .active:hover {
   text-decoration: none;
+}
+
+@media (max-width: 568px) {
+  h1 {
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 12px;
+  }
+  img {
+    display: none;
+  }
+  .temperature {
+    font-size: 20px;
+  }
+  .list-group-item {
+    font-size: 11px;
+  }
+  .temperature .units {
+    font-size: 14px;
+    top: -6px;
+  }
+  .weather-forecast {
+  }
 }
